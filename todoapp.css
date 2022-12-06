@@ -145,6 +145,17 @@ body {
   }
 
 
+  .fa-trash,
+  .fa-check {
+    pointer-events: none;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+
 
 
   /* --------------------------Contadores--------------------------- */

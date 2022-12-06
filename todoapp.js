@@ -13,32 +13,40 @@ addBtn.addEventListener('click', (e) => {
 
     if (text !== '') {
         const li = document.createElement('li');
-    const p = document.createElement('p');
-    p.textContent = text;
+        const p = document.createElement('p');
+        p.textContent = text;
 
-    li.appendChild(p);
-    li.appendChild(chkBtn())
-    li.appendChild(addDeleteBtn());
-    ul.appendChild(li);
+        li.appendChild(p);
+        li.appendChild(chkBtn())
+        li.appendChild(addDeleteBtn());
+        ul.appendChild(li);
 
-    input.value = "";
-    empty.style.display = 'none';
-    
-    contadorTotal.innerHTML = ul.children.length;
-    contIncompleted.innerHTML = ul.children.length;
+        input.value = "";
+        empty.style.display = 'none';
+
+        contadorTotal.innerHTML = ul.children.length;
+        contIncompleted.innerHTML = ul.children.length;
 
     }
 
-    
+
 });
 
 function addDeleteBtn() {
-    const deleteBtn = document.createElement('button');
 
-    deleteBtn.textContent = 'X';
-    deleteBtn.className = 'btn-delete';
+//-------------------------Nuevo implemento comienza aqui---------------------------------------------------
+    const trashButton = document.createElement('button');
 
-    deleteBtn.addEventListener('click', (e) => {
+    //Todo div
+    const todoDiv = document.createElement('div');
+    todoDiv.classList.add("todo");
+
+    //Check trash button
+    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+    trashButton.classList.add('btn-delete');
+    todoDiv.appendChild(trashButton);
+
+    trashButton.addEventListener('click', (e) => {
         const item = e.target.parentElement;
         ul.removeChild(item);
         contadorTotal.innerHTML = ul.children.length;
@@ -47,28 +55,79 @@ function addDeleteBtn() {
         const items = document.querySelectorAll('li');
 
         if (items.length === 0) {
-            empty.style.display = 'block';          
+            empty.style.display = 'block';
         }
     });
-    return deleteBtn;
+    return trashButton;
+//-------------------------Nuevo implemento termina aqui---------------------------------------------------
+
+    //const deleteBtn = document.createElement('button');
+
+    // deleteBtn.textContent = 'X';
+    // deleteBtn.className = 'btn-delete';
+
+    // deleteBtn.addEventListener('click', (e) => {
+    //     const item = e.target.parentElement;
+    //     ul.removeChild(item);
+    //     contadorTotal.innerHTML = ul.children.length;
+    //     contIncompleted.innerHTML = ul.children.length;
+
+    //     const items = document.querySelectorAll('li');
+
+    //     if (items.length === 0) {
+    //         empty.style.display = 'block';
+    //     }
+    // });
+    // return deleteBtn;
 }
 
 
 
 function chkBtn() {
-    const chkBtn = document.createElement('button');
 
-    chkBtn.textContent = 'O';
-    chkBtn.className = 'chkBtn';
 
-    chkBtn.addEventListener('click', (e) => {
-        const item = e.target;
+    //-------------------------Nuevo implemento comienza aqui---------------------------------------------------
+    const completedButton = document.createElement('button');
+
+    //Todo div
+    const todoDiv = document.createElement('div');
+    todoDiv.classList.add("todo");
+
+    //Check trash button
+    completedButton.innerHTML = '<i class="fas fa-check"></i>';
+    completedButton.classList.add('chkBtn');
+    todoDiv.appendChild(completedButton);
+
+    completedButton.addEventListener('click', (e) => {
         
-        
+        todo.classList.toggle('completed');
 
- 
+
+        contadorTotal.innerHTML = ul.children.length;
+        contIncompleted.innerHTML = ul.children.length;
+
+    
     });
-    return chkBtn;
+    return completedButton;
+
+
+
+
+//-------------------------Nuevo implemento termina aqui---------------------------------------------------
+
+    // const chkBtn = document.createElement('button');
+
+    // chkBtn.textContent = 'O';
+    // chkBtn.className = 'chkBtn';
+
+    // chkBtn.addEventListener('click', (e) => {
+    //     const item = e.target;
+
+
+
+
+    // });
+    // return chkBtn;
 }
 
 
