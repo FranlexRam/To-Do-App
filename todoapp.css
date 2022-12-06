@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    background-color: lightseagreen;
+    color: rgb(5, 2, 2);
+  }
+  
+  h1 {
+    text-align: center;
+    color: darkslategrey;
+  }
+  
+  .container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 30px;
+  }
+  
+  .search {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  
+  form {
+    display: flex;
+  }
+  
+  input {
+    padding: 15px 10px;
+    outline: none;
+    width: 400px;
+  }
+  
+  .li-container {
+    background-color: white;
+    width: 100%;
+    color: darkslategray;
+    margin-top: 20px;
+  }
+  
+  ul {
+    padding: 0;
+  }
+  
+  li {
+    list-style: none;
+    background-color: lightgray;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: flex;
+  }
+  
+  li p {
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+  }
+  
+
+  /* --------------------------Botones--------------------------- */
+
+  /* Delete btn */
+  .btn-delete {
+    padding: 8px 20px;
+    background-color: rgb(235, 37, 37);
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 1s ease;
+    box-shadow: 1px -2px 5px -0.8px;
+  }
+  
+  .btn-delete:hover {
+    background-color: rgb(156, 14, 14);
+    color: white;
+  }
+
+
+/* Done task */
+  .chkBtnUndo {
+    padding: 8px 20px;
+    background-color: rgba(6, 39, 6);
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 1s ease;
+    box-shadow: 1px -2px 5px -0.8px;
+    color: white;
+}
+
+.chkBtnUndo:hover {
+    background-color: rgb(70, 235, 37, 0.834);
+    color: black;
+}
+
+/* Undone task */
+.chkBtn {
+    padding: 8px 20px;
+    background-color: rgba(70, 235, 37, 0.834);
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 1s ease;
+    box-shadow: 1px -2px 5px -0.8px;
+}
+
+.chkBtn:hover {
+    background-color: rgb(6, 39, 6);
+    color: white;
+}
+
+
+  
+  .btn-add {
+    padding: 5px 15px;
+    border: none;
+    color: white;
+    font-family: fantasy;
+    background-color: teal;
+    font-size: 1.4rem;
+    outline: none;
+  }
+  
+  .btn-add:hover {
+    cursor: pointer;
+    background-color: darkcyan;
+  }
+  
+  .empty {
+    color: darkslategrey;
+  }
+
+
+
+
+  /* --------------------------Contadores--------------------------- */
+
+  .task-status {
+    padding: 1rem;
+    display: flex;
+    margin-top: 0.5rem;
+    color: white;
+    font-weight: 600;
+}
+
+
+  .total-task {
+    padding: 0.5rem;
+    border: 0.01rem solid black;
+    margin-right: 1rem;
+    border-radius: 7px;
+    background-color: rgb(101, 101, 168);
+}
+
+.completed-task {
+    padding: 0.5rem;
+    border: 0.01rem solid black;
+    margin-right: 1rem;
+    border-radius: 7px;
+    background-color: rgb(27, 131, 36);
+}
+
+.incompleted-task {
+    padding: 0.5rem;
+    border: 0.01rem solid black;
+    margin-right: 1rem;
+    border-radius: 7px;
+    background-color: rgb(221, 11, 7);
+}
