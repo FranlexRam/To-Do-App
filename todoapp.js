@@ -61,27 +61,7 @@ function addDeleteBtn() {
     return trashButton;
 //-------------------------Nuevo implemento termina aqui---------------------------------------------------
 
-    //const deleteBtn = document.createElement('button');
-
-    // deleteBtn.textContent = 'X';
-    // deleteBtn.className = 'btn-delete';
-
-    // deleteBtn.addEventListener('click', (e) => {
-    //     const item = e.target.parentElement;
-    //     ul.removeChild(item);
-    //     contadorTotal.innerHTML = ul.children.length;
-    //     contIncompleted.innerHTML = ul.children.length;
-
-    //     const items = document.querySelectorAll('li');
-
-    //     if (items.length === 0) {
-    //         empty.style.display = 'block';
-    //     }
-    // });
-    // return deleteBtn;
 }
-
-
 
 function chkBtn() {
 
@@ -99,8 +79,12 @@ function chkBtn() {
     todoDiv.appendChild(completedButton);
 
     completedButton.addEventListener('click', (e) => {
+        const item = e.target.parentElement;
         
+       if (item === 'chkBtn') {
+        const todo = item.parentElement;
         todo.classList.toggle('completed');
+       }
 
 
         contadorTotal.innerHTML = ul.children.length;
@@ -115,19 +99,6 @@ function chkBtn() {
 
 //-------------------------Nuevo implemento termina aqui---------------------------------------------------
 
-    // const chkBtn = document.createElement('button');
-
-    // chkBtn.textContent = 'O';
-    // chkBtn.className = 'chkBtn';
-
-    // chkBtn.addEventListener('click', (e) => {
-    //     const item = e.target;
-
-
-
-
-    // });
-    // return chkBtn;
 }
 
 
