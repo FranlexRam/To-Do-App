@@ -79,17 +79,18 @@ function deleteCheck(e) {
         const todo = item.parentElement;
         todo.classList.toggle('completed');
         
-        completed.innerHTML = ul.children.length
+        completed.innerHTML = ul.children.length;
         console.log('completed task');
-        contIncompleted.innerHTML = ul.children
-        console.log('eliminar Uncompleted');
-       
+        contIncompleted.innerHTML = ul.children.filter;
+        console.log('eliminar Uncompleted');  
+    }
+
     }
 
     if (item.classList[0] === 'chkBtn') {
         //aqui codigo contador de tarea completada.
     }
-}
+
 
 
 (() => {
