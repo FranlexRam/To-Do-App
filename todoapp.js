@@ -1,114 +1,114 @@
-// Selectores
-const input = document.querySelector('input');
-const addBtn = document.querySelector('.btn-add');
-const ul = document.querySelector('ul');
-const empty = document.querySelector('.empty');
-const contadorTotal = document.getElementById('contTotal');
-const contIncompleted = document.getElementById('contIncompleted');
+/* SELECTORES */
+const formulario = document.querySelector("#formulario");
+const tareas = document.querySelector("#tareas");
+const total = document.querySelector("#total");
+const completadas = document.querySelector("#completadas");
+const incompletas = document.querySelector("#incompletas");
+let task = [];
+/* EVENTOS */
+(() => {
+    formulario.addEventListener('submit', validarFormulario);
+    tareas.addEventListener("click", eliminarTarea);
+    tareas.addEventListener("click", completarTarea);
+    document.addEventListener("DOMContentLoaded", () => {
+        let datosLS = JSON.parse(localStorage.getItem("tareas")) || [];
+        task = datosLS;
+        agregarHTML();
+    })
+})()
 
-addBtn.addEventListener('click', (e) => {
+/* FUNCIONES */
+function validarFormulario(e) {
     e.preventDefault();
+    //validar los campos
+    const tarea = document.querySelector("#tarea").value;
+    if (tarea.trim().length === 0) {
+        console.log('vacio');
+        return
+    }
 
-    const text = input.value;
+    //crear objeto tarea
+    const objTarea = { id: Date.now(), tarea: tarea, estado: false };
+    //agregar al array
+    task = [...task, objTarea];
+    formulario.reset();
 
-    if (text !== '') {
-        const li = document.createElement('li');
-        const p = document.createElement('p');
-        p.textContent = text;
+    //agregar al HTML
+    agregarHTML();
 
-        li.appendChild(p);
-        li.appendChild(chkBtn())
-        li.appendChild(addDeleteBtn());
-        ul.appendChild(li);
+}
 
-        input.value = "";
-        empty.style.display = 'none';
 
-        contadorTotal.innerHTML = ul.children.length;
-        contIncompleted.innerHTML = ul.children.length;
+function agregarHTML() {
 
+    //limpiar el HTML
+    while (tareas.firstChild) {
+        tareas.removeChild(tareas.firstChild)
+    }
+
+    if (task.length > 0) {
+        task.forEach(item => {
+            const elemento = document.createElement('div');
+            elemento.classList.add('item-tarea');
+            elemento.innerHTML = `
+                <p>${item.estado ? (`<span class='completa'>${item.tarea}</span>`) : (`<span>${item.tarea}</span>`)}</p>
+                <div class="botones">
+                    <button class="completada" data-id="${item.id}">      ${item.estado ? (`<span class='completa'><i class="fa-sharp fa-solid fa-check-double"></i></span>`) : (`<span><i class="fa-solid fa-check"></i></span>`)}          </button>
+                    <button class="eliminar" data-id="${item.id}">        ${item.estado ? (`<span class='completa'><i class="fa-solid fa-trash-can"></i></span>`) : (`<span><i class="fa-solid fa-trash-can"></i></span>`)}          </button>
+                </div>
+            `
+
+            tareas.appendChild(elemento)
+        });
+
+    } else {
+        const mensaje = document.createElement("h5");
+        mensaje.textContent = "~No tienes tareas pendientes~"
+        tareas.appendChild(mensaje)
     }
 
 
-});
 
-function addDeleteBtn() {
+    //CONTADORES
+    let totalTareas = task.length;
+    let tareasCompletas = task.filter(item => item.estado === true).length;
+    let tareasIncompletas = task.filter(item => item.estado === false).length;
 
-//-------------------------Nuevo implemento comienza aqui---------------------------------------------------
-    const trashButton = document.createElement('button');
+    total.textContent = `Total: ${totalTareas}`;
+    completadas.textContent = `Completadas: ${tareasCompletas}`;
+    incompletas.textContent = `Incompletas: ${tareasIncompletas}`;
 
-    //Todo div
-    const todoDiv = document.createElement('div');
-    todoDiv.classList.add("todo");
-
-    //Check trash button
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add('btn-delete');
-    todoDiv.appendChild(trashButton);
-
-    trashButton.addEventListener('click', (e) => {
-        const item = e.target.parentElement;
-        ul.removeChild(item);
-        contadorTotal.innerHTML = ul.children.length;
-        contIncompleted.innerHTML = ul.children.length;
-
-        const items = document.querySelectorAll('li');
-
-        if (items.length === 0) {
-            empty.style.display = 'block';
-        }
-    });
-    return trashButton;
-//-------------------------Nuevo implemento termina aqui---------------------------------------------------
+    //Almacenar datos con localStorage
+    localStorage.setItem("tareas", JSON.stringify(task))
 
 }
 
-function chkBtn() {
-
-
-    //-------------------------Nuevo implemento comienza aqui---------------------------------------------------
-    const completedButton = document.createElement('button');
-
-    //Todo div
-    const todoDiv = document.createElement('div');
-    todoDiv.classList.add("todo");
-
-    //Check trash button
-    completedButton.innerHTML = '<i class="fas fa-check"></i>';
-    completedButton.classList.add('chkBtn');
-    todoDiv.appendChild(completedButton);
-
-    completedButton.addEventListener('click', (e) => {
-        const item = e.target.parentElement;
-        
-       if (item === 'chkBtn') {
-        const todo = item.parentElement;
-        todo.classList.toggle('completed');
-       }
-
-
-        contadorTotal.innerHTML = ul.children.length;
-        contIncompleted.innerHTML = ul.children.length;
-
-    
-    });
-    return completedButton;
-
-
-
-
-//-------------------------Nuevo implemento termina aqui---------------------------------------------------
-
+function eliminarTarea(e) {
+    if (e.target.classList.contains("eliminar")) {
+        const tareaID = Number(e.target.getAttribute("data-id"));
+        //eliminar con el array method filter
+        const nuevasTareas = task.filter((item) => item.id !== tareaID);
+        task = nuevasTareas;
+        agregarHTML();
+    }
 }
 
 
+//completar tarea
+function completarTarea(e) {
+    if (e.target.classList.contains("completada")) {
+        const tareaID = Number(e.target.getAttribute("data-id"));
+        const nuevasTareas = task.map(item => {
+            if (item.id === tareaID) {
+                item.estado = !item.estado;
+                return item;
+            } else {
+                return item
+            }
+        })
 
-//Almacenar datos:
-
-(() => {
-    //tbody.innerHTML = localStorage.getItem('lista');
-    contadorTotal.innerHTML = ul.children.length;
-    contIncompleted.innerHTML = ul.children.length;
-})()
-
-
+        //Editar el arreglo
+        task = nuevasTareas;
+        agregarHTML();
+    }
+}

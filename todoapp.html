@@ -11,74 +11,38 @@
 
 <body>
 
-    <div class="container">
-        <h1>CRUD: To Do App</h1>
-        <div class="search">
-            <form action="">
-                <input type="text" placeholder="Agregar nueva tarea">
-                <button class="btn-add">+</button>
-            </form>
-        </div>
-
-
-
-        <!-- Nuevas tareas -->
-        <div class="li-container"><!-- class="todo-container" -->
-            <ul class="todo-list">
-
-                <!-- <div class="todo">
-                    <li></li>
-                    <button></button> chk btn
-                    <button></button> del btn
-                </div> -->
-
-            </ul>
-        </div>
-
-
-
-
-        <!-- Mensaje de tareas pendientes -->
-        <div class="empty">
-            <p>No tienes tareas pendientes.</p>
-        </div>      
+    
+    
+    
+    <div class="contenedor">
+        <h1 id="app-title">CRUD: To Do App</h1>
         
+        <form class="formulario" id="formulario">
+            <input class="todo-input" type="text" id="tarea" placeholder="Agregar nueva tarea">
+            <input class="add-task" type="submit" value="+">
+        </form>
         
-        
-        
-        <!-- Contadores -->
-        <div class="task-status">
-
-
-            <div class="task-status">
-
-
-                <div class="total-task">
-                    <span>Total: </span>
-                    <span class="cantidad" id="contTotal"> </span>
-                </div>
-
-                <div class="completed-task">
-                    <span>Completed: </span>
-                    <span class="cantidad" id="contCompleted"> </span>
-                </div>
-
-                <div class="incompleted-task">
-                    <span>Incompleted: </span>
-                    <span class="cantidad" id="contIncompleted"> </span>
+        <div class="tareas" id="tareas">
+            
+            <div class="item-tarea">
+                <p>Tarea 1</p>
+                <div class="botones">
+                    <button class="completada" data-id="${item.id}">?</button>
+                    <button class="eliminar" data-id="${item.id}">x</button>
                 </div>
             </div>
-
-
+            
         </div>
+        <div class="datos">
+            <p id="total">Total tareas: 0</p>
+            <p id="completadas">Tareas Completadas: 0</p>
+            <p id="incompletas">Tareas incompletas: 0</p>
+        </div>
+        
     </div>
 
 
-
-
-
-    <!-- <script src="./todoapp.js"></script> -->
-    <script src="./tutorial.js"></script>
+    <script src="./todoapp.js"></script>
     <script src="https://kit.fontawesome.com/88e9452887.js" crossorigin="anonymous"></script>
 </body>
 

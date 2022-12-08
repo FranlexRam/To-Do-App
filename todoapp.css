@@ -1,89 +1,173 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+body, h1, p, ul, h5 {
+    margin: 0;
+    font-family: 'Poor Story', cursive;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-    background-color: lightseagreen;
-    color: rgb(5, 2, 2);
-  }
-  
-  h1 {
-    text-align: center;
-    color: darkslategrey;
-  }
-  
-  .container {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
-    padding: 30px;
-  }
-  
-  .search {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-  
-  form {
+    padding: 1rem;
+    height: 100vh;
+    background-image: conic-gradient(at 100% 0%, rgba(54, 236, 60, 0.386), black);
     display: flex;
-  }
-  
-  input {
-    padding: 15px 10px;
-    outline: none;
-    width: 400px;
-  }
-  
-  .li-container {
-    background-color: white;
-    width: 100%;
-    color: darkslategray;
-    margin-top: 20px;
-  }
-  
-  ul {
-    padding: 0;
-  }
-  
-  li {
-    list-style: none;
-    background-color: lightgray;
+    align-items: center;
+    justify-content: center;
+}
+
+/* -------------------------------- botones ------------------------------ */
+.add-task {
     border-radius: 10px;
-    margin-top: 15px;
+    cursor: pointer;
+    transition: all 1s ease;
+    background-color: rgb(103, 169, 244);
+    border: 0;
+    font-size: 2.1rem;
+}
+
+.add-task:hover {
+    background-color: rgb(17, 14, 92);
+    color: white;
+}
+
+#app-title {
+    padding: 2rem;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 780;
+    text-shadow: 3px 2px 9px;
+    font-family: 'Poor Story', cursive;
+}
+
+
+h5 {
     display: flex;
-    padding: 6px 10px;
-  }
-  
-  li p {
-    margin: 0;
-    padding: 15px;
-    width: 100%;
-  }
-  
-  .todo {
-    margin: 0.5rem;
-    background: white;
-    font-size: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    height: 2.5rem;
+    
+}
+
+.completa {
+    text-decoration: line-through;
     color: black;
+    opacity: 0.17;
+}
+
+
+.fa-trash-can,
+.fa-check {
+    pointer-events: none;
+  }
+
+  span {
+    pointer-events: none;
+  }
+
+/* --------------------- Contadores ----------------------------------- */
+
+/* DATOS */
+.datos {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    gap: 10px;
+    font-weight: 600;
+    font-family: 'Poor Story', cursive;
+}
+
+
+#total {
+    background-color: rgb(101, 101, 168);
+    color: aliceblue;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 0.01rem solid black;
+}
+
+
+#completadas {
+    background-color: rgb(27, 131, 36);
+    color: aliceblue;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 0.01rem solid black;
+}
+
+#incompletas {
+    background-color: rgb(221, 11, 7);
+    color: aliceblue;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 0.01rem solid black;
+}
+
+
+
+/*------------------------------- CONTENEDOR ------------------------------- */
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+    width: 75vh;
+    padding: 0.4rem;
+    border: 0.1rem solid;
+    background-image: conic-gradient(at 2% -2%, rgb(159 222 212 / 71%), black);
+    border-radius: 10px;
+}
+
+.todo-input {
+    padding: 0.6rem;
+    border-radius: 10px;
+    width: 85%;
+    font-size: 1.3rem;
+    border: 0.008rem solid black;
+    font-family: 'Poor Story', cursive;
+    outline: none;
+}
+
+.formulario {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+
+
+/* ---------------- TAREAS ---------------- */
+.tareas {
+    padding: 0.3rem;
+    margin: 5px;
+    background-color: #ffd9d9;
+    width: 22.5rem;
+    border-radius: 6px;
+    font-family: 'Poor Story', cursive;
+    height: 100%;
+}
+
+.item-tarea {
     display: flex;
     justify-content: space-between;
+    background-color: #ffffff;
+    padding: 9px;
+    margin: 5px 2px;
     align-items: center;
     transition: all 1s ease;
-  }
+    font-weight: 600;
+}
 
-  .todo li {
-    flex: 1;
-  }
 
-  /* --------------------------Botones--------------------------- */
-
-  /* Delete btn */
-  .btn-delete {
+.eliminar {
     padding: 8px 20px;
     background-color: rgb(235, 37, 37);
     border-radius: 10px;
@@ -93,35 +177,15 @@ body {
     align-items: center;
     transition: all 1s ease;
     box-shadow: 1px -2px 5px -0.8px;
-  }
-  
-  .btn-delete:hover {
+    height: 36px;
+}
+
+.eliminar:hover {
     background-color: rgb(156, 14, 14);
     color: white;
-  }
-
-
-/* Done task */
-  .chkBtnUndo {
-    padding: 8px 20px;
-    background-color: rgba(6, 39, 6);
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: all 1s ease;
-    box-shadow: 1px -2px 5px -0.8px;
-    color: white;
 }
 
-.chkBtnUndo:hover {
-    background-color: rgb(70, 235, 37, 0.834);
-    color: black;
-}
-
-/* Undone task */
-.chkBtn {
+.completada {
     padding: 8px 20px;
     background-color: rgba(70, 235, 37, 0.834);
     border-radius: 10px;
@@ -131,79 +195,74 @@ body {
     align-items: center;
     transition: all 1s ease;
     box-shadow: 1px -2px 5px -0.8px;
+    height: 36px;
 }
 
-.chkBtn:hover {
+.completada:hover {
     background-color: rgb(6, 39, 6);
     color: white;
 }
 
 
-  
-  .btn-add {
-    padding: 5px 15px;
-    border: none;
-    color: white;
-    font-family: fantasy;
-    background-color: teal;
-    font-size: 1.4rem;
-    outline: none;
-  }
-  
-  .btn-add:hover {
-    cursor: pointer;
-    background-color: darkcyan;
-  }
-  
-  .empty {
-    color: darkslategrey;
-  }
-
-
-  .fa-trash,
-  .fa-check {
-    pointer-events: none;
-  }
-
-  .completed {
-    text-decoration: line-through;
-    opacity: 0.5;
-  }
-
-
-
-
-  /* --------------------------Contadores--------------------------- */
-
-  .task-status {
-    padding: 1rem;
+.botones {
     display: flex;
-    margin-top: 0.5rem;
-    color: white;
-    font-weight: 600;
+    flex-direction: row;
 }
 
 
-  .total-task {
-    padding: 0.5rem;
-    border: 0.01rem solid black;
-    margin-right: 1rem;
-    border-radius: 7px;
-    background-color: rgb(101, 101, 168);
+/* ------------------------------- MEDIA QUERIES -------------------------------- */
+
+@media (min-width:390px) {
+    .contenedor {
+        width:none;
+       }
+    #app-title {
+        font-size: 2.5rem;
+    }
+
+    #todo-input {
+        width: 15rem;
+        font-size: 1.4rem;
+    }
+    
+    #add-task {
+        font-size: 1.9rem;
+    } 
+
+    .todo {
+            font-size: 1.2rem;
+            width: 17.5rem;
+    }
+    .todo .hovertext{
+        font-size: 0.6rem;
+    }
+
+    .del-btn {
+            font-size: 0.8rem;
+    }
+
+    .chk-btn {
+        font-size: 0.8rem;
+    }
+
+    .task-status {
+        font-size: 0.65rem;
+    }
 }
 
-.completed-task {
-    padding: 0.5rem;
-    border: 0.01rem solid black;
-    margin-right: 1rem;
-    border-radius: 7px;
-    background-color: rgb(27, 131, 36);
-}
 
-.incompleted-task {
-    padding: 0.5rem;
-    border: 0.01rem solid black;
-    margin-right: 1rem;
-    border-radius: 7px;
-    background-color: rgb(221, 11, 7);
+
+
+
+@media (max-width: 600px) {
+    .contenedor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 15px;
+    }
+    #app-title {
+        font-size: 2rem;
+    }
 }
